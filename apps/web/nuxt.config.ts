@@ -3,6 +3,14 @@ export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	ssr: false,
+	app: {
+		head: {
+			title: process.env.NUXT_APP_NAME,
+		},
+	},
+	devServer: {
+		port: 3000,
+	},
 	modules: ["@nuxtjs/i18n", "@nuxt/ui"],
 	css: ["~/assets/css/main.css"],
 	i18n: {
