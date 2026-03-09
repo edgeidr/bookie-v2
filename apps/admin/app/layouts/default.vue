@@ -3,12 +3,10 @@
 		<UDashboardGroup>
 			<UDashboardSidebar collapsible :ui="{ footer: 'border-t border-default' }">
 				<template #header="{ collapsed }">
-					<template v-if="!collapsed">
-						<UIcon name="logos:nuxt-icon" />
-						<h2 class="text-lg font-bold">Bookie</h2>
-					</template>
-
-					<UDashboardSidebarCollapse class="ml-auto" />
+					<UIcon
+						name="logos:nuxt-icon"
+						:class="[collapsed ? 'mx-auto size-5' : undefined]" />
+					<h2 v-if="!collapsed" class="text-lg font-bold">Bookie</h2>
 				</template>
 
 				<template #default="{ collapsed }">
@@ -39,7 +37,11 @@
 
 			<UDashboardPanel>
 				<template #header>
-					<UDashboardNavbar> </UDashboardNavbar>
+					<UDashboardNavbar :title="$route.meta.title?.toString()">
+						<template #leading>
+							<UDashboardSidebarCollapse />
+						</template>
+					</UDashboardNavbar>
 				</template>
 
 				<template #body>
@@ -60,6 +62,7 @@
 			{
 				label: "Dashboard",
 				icon: "hugeicons:dashboard-square-02",
+				to: "/",
 			},
 			{
 				label: "Layouts",
