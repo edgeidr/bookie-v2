@@ -67,6 +67,7 @@
 			{
 				label: "Layouts",
 				icon: "hugeicons:maps-editing",
+				to: "/layouts",
 			},
 			{
 				label: "Bookings",
