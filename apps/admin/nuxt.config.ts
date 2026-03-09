@@ -21,4 +21,18 @@ export default defineNuxtConfig({
 		strategy: "no_prefix",
 		langDir: "../../packages/i18n/locales",
 	},
+	icon: {
+		mode: "svg",
+		clientBundle: {
+			scan: true,
+			icons: [
+				"hugeicons:cancel-01",
+				"hugeicons:menu-01",
+				"hugeicons:panel-left-open",
+				"hugeicons:panel-left-close",
+				"hugeicons:arrow-right-01",
+				"hugeicons:arrow-down-01",
+			],
+		},
+	},
 });
