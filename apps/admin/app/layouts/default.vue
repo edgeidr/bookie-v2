@@ -73,6 +73,7 @@
 				label: "Bookings",
 				icon: "hugeicons:calendar-04",
 				badge: 4,
+				to: "/bookings",
 			},
 		],
 		[
