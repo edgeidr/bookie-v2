@@ -80,6 +80,7 @@
 			{
 				label: "Users",
 				icon: "hugeicons:user-group-02",
+				to: "/users",
 			},
 			{
 				label: "Locations",
