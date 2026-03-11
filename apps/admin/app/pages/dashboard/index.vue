@@ -1,9 +1,9 @@
 <template>
 	<div class="flex gap-6">
-		<USkeleton class="h-64 w-full" />
-		<USkeleton class="h-64 w-full" />
-		<USkeleton class="h-64 w-full" />
-		<USkeleton class="h-64 w-full" />
+		<USkeleton class="h-40 w-full" />
+		<USkeleton class="h-40 w-full" />
+		<USkeleton class="h-40 w-full" />
+		<USkeleton class="h-40 w-full" />
 	</div>
 
 	<div class="flex h-full gap-6">
@@ -15,5 +15,6 @@
 <script setup lang="ts">
 	definePageMeta({
 		title: "Dashboard",
+		path: "/",
 	});
 </script>
