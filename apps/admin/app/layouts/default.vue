@@ -37,9 +37,16 @@
 
 			<UDashboardPanel>
 				<template #header>
-					<UDashboardNavbar :title="$route.meta.title?.toString()">
-						<template #leading>
-							<UDashboardSidebarCollapse />
+					<UDashboardNavbar>
+						<template #title>
+							<UBreadcrumb
+								:items="
+									$route.meta.breadcrumb?.map((item) => ({
+										...item,
+										active: false,
+									}))
+								">
+							</UBreadcrumb>
 						</template>
 					</UDashboardNavbar>
 				</template>

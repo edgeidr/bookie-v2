@@ -7,6 +7,6 @@
 
 <script setup lang="ts">
 	definePageMeta({
-		title: "Layout Status",
+		breadcrumb: [{ label: "Statuses" }, { label: "Layout Status" }],
 	});
 </script>

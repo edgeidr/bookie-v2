@@ -84,7 +84,7 @@
 	} from "@nuxt/ui";
 
 	definePageMeta({
-		title: "Layouts",
+		breadcrumb: [{ label: "Layouts" }],
 	});
 
 	const { locations } = useLocations();
@@ -142,7 +142,7 @@
 			}));
 
 		return [
-			{ label: "Edit" },
+			{ label: "Edit", to: "/layouts/editor" },
 			{
 				label: "Set Status",
 				children: statuses,

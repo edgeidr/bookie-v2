@@ -7,6 +7,6 @@
 
 <script setup lang="ts">
 	definePageMeta({
-		title: "Bookings",
+		breadcrumb: [{ label: "Bookings" }],
 	});
 </script>

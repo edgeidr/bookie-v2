@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 	definePageMeta({
-		title: "Dashboard",
 		path: "/",
+		breadcrumb: [{ label: "Dashboard" }],
 	});
 </script>
