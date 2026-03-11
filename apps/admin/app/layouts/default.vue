@@ -118,6 +118,7 @@
 			{
 				label: "Profile",
 				icon: "hugeicons:user-02",
+				to: "/profile",
 			},
 			{
 				label: "Switch App",
