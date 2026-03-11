@@ -113,6 +113,7 @@
 			{
 				label: "Settings",
 				icon: "hugeicons:settings-01",
+				to: "/settings",
 			},
 			{
 				label: "Profile",
