@@ -85,6 +85,7 @@
 			{
 				label: "Locations",
 				icon: "hugeicons:location-01",
+				to: "/locations",
 			},
 			{
 				label: "Statuses",
