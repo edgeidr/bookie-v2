@@ -1,7 +1,7 @@
 <template>
 	<UTabs
+		v-model="activeTab"
 		:items="tabItems"
-		:defaultValue="tabItems.at(0)?.value"
 		orientation="vertical"
 		:ui="{
 			root: 'h-full items-start gap-4',
@@ -10,7 +10,7 @@
 			trailingBadge: 'ml-auto',
 			content: 'h-full',
 		}">
-		<template #content="{ item }">
+		<template #content>
 			<div class="border-muted overflow-clip rounded-md border">
 				<div class="border-accented flex justify-end border-b px-4 py-3.5">
 					<UDropdownMenu
@@ -19,7 +19,7 @@
 								?.getAllColumns()
 								.filter((column) => column.getCanHide())
 								.map((column) => ({
-									label: column.columnDef.header,
+									label: column.columnDef.header?.toString(),
 									type: 'checkbox' as const,
 									checked: column.getIsVisible(),
 									onUpdateChecked: (checked: boolean) => {
@@ -45,7 +45,7 @@
 					<UTable
 						ref="tableRef"
 						v-model:columnVisibility="columnVisibility"
-						:data="getLayouts(item.value as number)"
+						:data="activeTabLayouts"
 						:columns
 						@contextmenu="onContextMenu"
 						@hover=""
@@ -87,6 +87,7 @@
 		breadcrumb: [{ label: "Layouts" }],
 	});
 
+	const route = useRoute();
 	const { locations } = useLocations();
 	const { layouts } = useLayouts();
 	const { layoutStatuses } = useLayoutStatuses();
@@ -124,15 +125,15 @@
 
 	const tabItems = computed<TabsItem[]>(() => {
 		return locations.map((location) => ({
-			value: location.id,
+			value: String(location.id),
 			label: location.name,
 			badge: location.layoutsCount || undefined,
 		}));
 	});
 
-	const getLayouts = (locationId: number) => {
-		return layouts.filter((layout) => layout.locationId === locationId);
-	};
+	const activeTabLayouts = computed(() => {
+		return layouts.filter((layout) => layout.locationId.toString() == activeTab.value);
+	});
 
 	const getRowActions = (row: TableRow<any>): DropdownMenuItem[] => {
 		const statuses: DropdownMenuItem[] = layoutStatuses
@@ -163,4 +164,16 @@
 	const onContextMenu = (e: Event, row: TableRow<any>) => {
 		contextMenuItems.value = getRowActions(row);
 	};
+
+	const activeTab = ref((route.query.tab as string) ?? tabItems.value.at(0)?.value);
+
+	watch(activeTab, (tab) => {
+		navigateTo({ path: "/layouts", query: { ...route.query, tab } });
+	});
+
+	watch(tabItems, (tabs) => {
+		if (activeTab.value) return;
+		if (!tabs?.length) return;
+		activeTab.value = tabs.at(0)!.value as string;
+	});
 </script>
