@@ -91,9 +91,18 @@
 				label: "Statuses",
 				icon: "hugeicons:status",
 				children: [
-					{ label: "Booking Status" },
-					{ label: "Layout Status" },
-					{ label: "User Status" },
+					{
+						label: "Booking Status",
+						to: "/booking-status",
+					},
+					{
+						label: "Layout Status",
+						to: "/layout-status",
+					},
+					{
+						label: "User Status",
+						to: "/user-status",
+					},
 				],
 			},
 		],
