@@ -2,6 +2,7 @@
 	<UTabs
 		v-model="activeTab"
 		:items="tabItems"
+		color="neutral"
 		orientation="vertical"
 		:ui="{
 			root: 'h-full items-start gap-4',
@@ -13,32 +14,41 @@
 		<template #content>
 			<div class="border-muted overflow-clip rounded-md border">
 				<div class="border-accented flex justify-end border-b px-4 py-3.5">
-					<UDropdownMenu
-						:items="
-							tableRef?.tableApi
-								?.getAllColumns()
-								.filter((column) => column.getCanHide())
-								.map((column) => ({
-									label: column.columnDef.header?.toString(),
-									type: 'checkbox' as const,
-									checked: column.getIsVisible(),
-									onUpdateChecked: (checked: boolean) => {
-										tableRef?.tableApi
-											?.getColumn(column.id)
-											?.toggleVisibility(!!checked);
-									},
-									onSelect: (e: Event) => {
-										e.preventDefault();
-									},
-								}))
-						"
-						:content="{ align: 'end' }">
+					<div class="flex items-center gap-4">
 						<UButton
-							label="Columns"
+							label="New Layout"
+							icon="hugeicons:add-01"
 							color="neutral"
-							variant="outline"
-							trailing-icon="i-lucide-chevron-down" />
-					</UDropdownMenu>
+							variant="soft"
+							to="/layouts/editor" />
+
+						<UDropdownMenu
+							:items="
+								tableRef?.tableApi
+									?.getAllColumns()
+									.filter((column) => column.getCanHide())
+									.map((column) => ({
+										label: column.columnDef.header?.toString(),
+										type: 'checkbox' as const,
+										checked: column.getIsVisible(),
+										onUpdateChecked: (checked: boolean) => {
+											tableRef?.tableApi
+												?.getColumn(column.id)
+												?.toggleVisibility(!!checked);
+										},
+										onSelect: (e: Event) => {
+											e.preventDefault();
+										},
+									}))
+							"
+							:content="{ align: 'end' }">
+							<UButton
+								label="Columns"
+								color="neutral"
+								variant="outline"
+								trailing-icon="i-lucide-chevron-down" />
+						</UDropdownMenu>
+					</div>
 				</div>
 
 				<UContextMenu :items="contextMenuItems">
