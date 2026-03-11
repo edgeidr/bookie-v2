@@ -1,7 +1,7 @@
 <template>
 	<UMain>
 		<UDashboardGroup>
-			<UDashboardSidebar collapsible :ui="{ footer: 'border-t border-default' }">
+			<UDashboardSidebar collapsible :ui="{ footer: 'border-t border-default' }" resizable>
 				<template #header="{ collapsed }">
 					<UIcon
 						name="logos:nuxt-icon"
@@ -133,7 +133,7 @@
 		[
 			{
 				label: "Log Out",
-				icon: "hugeicons:login-02",
+				icon: "hugeicons:logout-05",
 				color: "error",
 			},
 		],

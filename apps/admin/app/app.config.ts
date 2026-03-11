@@ -8,8 +8,8 @@ export default defineAppConfig({
 		icons: {
 			close: "hugeicons:cancel-01",
 			menu: "hugeicons:menu-01",
-			panelClose: "hugeicons:panel-left-open",
-			panelOpen: "hugeicons:panel-left-close",
+			panelClose: "hugeicons:panel-left",
+			panelOpen: "hugeicons:panel-left",
 			chevronRight: "hugeicons:arrow-right-01",
 			chevronDown: "hugeicons:arrow-down-01",
 		},
